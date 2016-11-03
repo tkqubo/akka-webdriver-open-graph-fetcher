@@ -11,6 +11,12 @@ import org.openqa.selenium.{By, NoSuchElementException, WebDriver}
 import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}
 
+/**
+  * Fetches OpenGraph from the specified URL, using WebDriver internally
+  * @param createDriver creates WebDriver
+  * @param requestTimeout Request timeout
+  * @param scheduler
+  */
 class WebDriverOpenGraphFetcher(
   val createDriver: () => WebDriver = createDefaultDriver,
   val requestTimeout: FiniteDuration = defaultRequestTimeout
@@ -70,6 +76,8 @@ object WebDriverOpenGraphFetcher {
     createDriver: () => WebDriver = createDefaultDriver,
     requestTimeout: FiniteDuration = defaultRequestTimeout
   )(implicit system: ActorSystem): WebDriverOpenGraphFetcher = new WebDriverOpenGraphFetcher(createDriver, requestTimeout)(system.scheduler)
+  /** Default WebDriver creating logic, currently returns JBrowserDriver */
   def createDefaultDriver(): JBrowserDriver = new JBrowserDriver()
+  /** Default request timeout */
   def defaultRequestTimeout: FiniteDuration = 8 seconds
 }
