@@ -1,4 +1,4 @@
-
+organization := "com.github.tkqubo"
 name := "akka-webdriver-open-graph-fetcher"
 scalaVersion := "2.11.8"
 
