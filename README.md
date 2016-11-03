@@ -24,7 +24,6 @@ This library can parse asynchronously-rendered HTML body using WebDriver, so it 
 
 ```scala
 import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
 import scala.concurrent.Await
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -32,7 +31,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import com.github.tkqubo.akka_open_graph_fetcher._
 
 implicit val system = ActorSystem("console")
-implicit val mat = ActorMaterializer()
 
 val fetcher = WebDriverOpenGraphFetcher()
 val future = fetcher.fetch("https://www.google.co.jp/maps/place/Higashi-ginza+Station")
